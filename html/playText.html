@@ -1,0 +1,80 @@
+// Reproductor para Texto
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Audio</title>
+    <style>
+        .audio-container {
+            width: auto;
+            height: 0px;
+            background-color: white;
+            border-radius: 0%;
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            cursor: pointer;
+            font-family: "Roboto", sans-serif; 
+        }
+
+        .play-icon {
+            align-items left;
+            font-size: 30px;
+            color: white;
+        }
+
+        .playing {
+            background-color: white;
+        }
+
+        .pause-icon {
+            align-items left;
+            font-size: 30px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="audio-container" id="audioContainer" onclick="toggleAudio()">
+        <b class="play-icon" id="playButton">Conclusiones Claves.</b>
+    </div>
+    <audio id="myAudio">
+        <source src="https://github.com/dbaezh78/gooSecurity/raw/main/PlayitSafe/m2/04-The_relationship_between_frameworks_and_controls.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        var audio = document.getElementById("myAudio");
+        var playButton = document.getElementById("playButton");
+        var isPaused = true;
+		// ********************************************************
+		// Iniciar Reproducción de la sección en cuestion
+		// ********************************************************
+        var pauseTime = 283.401; // Inicia en el segundo 0
+
+        function toggleAudio() {
+            if (isPaused) {
+                audio.currentTime = pauseTime;
+                audio.play();
+                playButton.innerHTML = '<b class="pause-icon">Conclusiones Claves.</b>';
+                isPaused = false;
+
+		// ********************************************************
+		// Detener Reproducción de la sección en cuestion
+		// ********************************************************
+                setTimeout(function() {
+                    audio.pause();
+                    isPaused = true;
+                    playButton.innerHTML = '<b class="play-icon">Conclusiones Claves.</b>';
+                }, (311.447 - pauseTime) * 1000); // Detiene la reproducción después de la diferencia de tiempo en milisegundos
+            } else {
+                pauseTime = audio.currentTime; // Almacena el tiempo de pausa
+                audio.pause();
+                playButton.innerHTML = '<b class="play-icon">Conclusiones Claves.</b>';
+                isPaused = true;
+            }
+        }
+    </script>
+</body>
+</html>
